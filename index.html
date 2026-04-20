@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Amrut Pharma — Performance Report & National Expansion Strategy | Futuready Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root{
+  --bg:#0A0F2C;
+  --surface:#111936;
+  --surface-2:#0E1530;
+  --gold:#C9A84C;
+  --gold-light:#E8C96A;
+  --gold-soft:rgba(201,168,76,0.12);
+  --text:#FFFFFF;
+  --text-muted:#A0AECB;
+  --text-dim:#6B7A9E;
+  --border:rgba(201,168,76,0.22);
+  --border-soft:rgba(255,255,255,0.08);
+  --red:#E57373;
+  --green:#7BCB9F;
+  --blue:#7BAEDB;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+body{font-size:16px;line-height:1.5}
+
+/* ============ PROGRESS BAR ============ */
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));z-index:100;transition:width .4s ease;box-shadow:0 0 8px rgba(201,168,76,.5)}
+
+/* ============ SLIDE DECK ============ */
+.deck{width:100vw;height:100vh;position:relative;overflow:hidden}
+.slide{position:absolute;inset:0;padding:60px 80px 100px;opacity:0;pointer-events:none;transition:opacity .5s ease;overflow-y:auto;background:var(--bg)}
+.slide.active{opacity:1;pointer-events:auto}
+.slide.active .content > *{animation:fadeUp .6s cubic-bezier(.2,.7,.2,1) backwards}
+.slide.active .content > *:nth-child(1){animation-delay:.05s}
+.slide.active .content > *:nth-child(2){animation-delay:.15s}
+.slide.active .content > *:nth-child(3){animation-delay:.25s}
+.slide.active .content > *:nth-child(4){animation-delay:.35s}
+.slide.active .content > *:nth-child(5){animation-delay:.45s}
+.slide.active .content > *:nth-child(6){animation-delay:.55s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============ SLIDE HEADERS ============ */
+.slide-meta{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--border-soft);margin-bottom:34px}
+.slide-meta .tag{font-size:11px;letter-spacing:3px;font-weight:600;color:var(--gold);text-transform:uppercase}
+.slide-meta .brand{font-size:11px;letter-spacing:2px;font-weight:500;color:var(--text-dim);text-transform:uppercase}
+h1.slide-title{font-size:44px;font-weight:700;line-height:1.15;letter-spacing:-.5px;margin-bottom:10px}
+h1.slide-title .accent{color:var(--gold)}
+.slide-sub{font-size:16px;color:var(--text-muted);max-width:780px;line-height:1.6;margin-bottom:34px}
+
+/* ============ COVER ============ */
+.cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px;position:relative;background:radial-gradient(ellipse at top,#1A2454 0%,var(--bg) 60%)}
+.cover::before{content:'';position:absolute;top:40px;right:40px;width:120px;height:120px;border:1px solid var(--gold);opacity:.3;transform:rotate(45deg)}
+.cover::after{content:'';position:absolute;bottom:40px;left:40px;width:80px;height:80px;border:1px solid var(--gold);opacity:.2;border-radius:50%}
+.cover .pretag{font-size:12px;letter-spacing:6px;color:var(--gold);font-weight:600;margin-bottom:24px;text-transform:uppercase}
+.cover h1{font-size:68px;font-weight:800;letter-spacing:-1.5px;line-height:1.05;max-width:1100px;margin-bottom:18px}
+.cover h1 em{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-weight:500}
+.cover .sub{font-size:20px;color:var(--text-muted);max-width:780px;margin-bottom:48px;line-height:1.6}
+.cover .gold-line{width:80px;height:2px;background:var(--gold);margin:0 auto 36px}
+.cover .meta-row{display:flex;gap:60px;margin-top:28px;padding-top:28px;border-top:1px solid var(--border-soft);width:100%;max-width:900px;justify-content:center}
+.cover .meta-row .item{text-align:center}
+.cover .meta-row .item .label{font-size:10px;letter-spacing:2px;color:var(--text-dim);text-transform:uppercase;margin-bottom:6px}
+.cover .meta-row .item .val{font-size:15px;color:var(--text);font-weight:600}
+.cover .footer-brand{position:absolute;bottom:30px;right:40px;font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:600;text-transform:uppercase}
+
+/* ============ CORE THOUGHT ============ */
+.thought{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px;background:linear-gradient(180deg,var(--bg) 0%,#0D1436 100%)}
+.thought .kicker{font-size:11px;letter-spacing:4px;color:var(--gold);font-weight:600;margin-bottom:40px;text-transform:uppercase}
+.thought .quote{font-family:'Playfair Display',serif;font-style:italic;font-size:60px;font-weight:500;line-height:1.2;max-width:1100px;color:var(--text)}
+.thought .quote span{color:var(--gold)}
+.thought .underline{width:100px;height:2px;background:var(--gold);margin:40px 0}
+.thought .sub{font-size:18px;color:var(--text-muted);max-width:760px;line-height:1.65}
+
+/* ============ CONTENT BOX ============ */
+.content{max-width:1400px;margin:0 auto}
+
+/* ============ METRIC CARDS ============ */
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:28px}
+.metric{background:var(--surface);border:1px solid var(--border);padding:26px;border-radius:6px;transition:all .3s}
+.metric:hover{transform:translateY(-3px);border-color:var(--gold)}
+.metric .num{font-size:40px;font-weight:800;color:var(--gold);line-height:1;margin-bottom:10px;letter-spacing:-1px}
+.metric .lbl{font-size:13px;color:var(--text);font-weight:600;margin-bottom:4px}
+.metric .sub{font-size:11px;color:var(--text-dim);letter-spacing:.5px}
+
+/* ============ TABLES ============ */
+.tbl-wrap{background:var(--surface);border:1px solid var(--border-soft);border-radius:6px;overflow:hidden;margin-bottom:20px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+table th{background:rgba(201,168,76,0.08);color:var(--gold);text-align:left;padding:14px 18px;font-weight:600;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+table td{padding:14px 18px;color:var(--text);border-bottom:1px solid var(--border-soft);vertical-align:top}
+table tr:last-child td{border-bottom:none}
+table tr:hover td{background:rgba(201,168,76,0.04)}
+table td.muted{color:var(--text-muted)}
+table td.accent{color:var(--gold);font-weight:600}
+table td.right{text-align:right}
+table td.center{text-align:center}
+.tbl-compact td, .tbl-compact th{padding:10px 14px;font-size:12px}
+
+/* ============ TWO COL ============ */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:20px}
+
+/* ============ PANELS ============ */
+.panel{background:var(--surface);border:1px solid var(--border-soft);border-radius:6px;padding:26px;height:100%}
+.panel.gold{border-color:var(--border);background:linear-gradient(180deg,var(--surface) 0%,rgba(201,168,76,0.04) 100%)}
+.panel h3{font-size:17px;font-weight:700;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px;letter-spacing:.3px}
+.panel h3::before{content:'';width:4px;height:16px;background:var(--gold);border-radius:2px}
+.panel p{font-size:14px;color:var(--text-muted);line-height:1.65;margin-bottom:12px}
+.panel ul{list-style:none;padding:0}
+.panel ul li{padding:9px 0 9px 24px;position:relative;color:var(--text);font-size:13.5px;line-height:1.55;border-bottom:1px dashed rgba(255,255,255,.05)}
+.panel ul li:last-child{border-bottom:none}
+.panel ul li::before{content:'';position:absolute;left:6px;top:16px;width:6px;height:6px;background:var(--gold);border-radius:50%}
+.panel ul li strong{color:var(--gold-light);font-weight:600}
+
+/* ============ KPI STATES ============ */
+.state-bar{display:flex;gap:8px;margin:14px 0;align-items:center}
+.state-bar .name{min-width:130px;font-size:13px;color:var(--text);font-weight:500}
+.state-bar .bar{flex:1;height:10px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;position:relative}
+.state-bar .bar .fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:3px;transition:width 1.5s ease}
+.state-bar .val{min-width:80px;text-align:right;font-size:12px;color:var(--gold);font-weight:600}
+
+/* ============ BENCHMARK TABLE ============ */
+.benchmark-table{width:100%;border-collapse:collapse;font-size:13px}
+.benchmark-table th{background:rgba(201,168,76,.08);color:var(--gold);padding:14px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-align:center}
+.benchmark-table td{padding:12px 14px;border-bottom:1px solid var(--border-soft);text-align:center}
+.benchmark-table td:first-child{text-align:left;font-weight:600;color:var(--text)}
+.benchmark-table .good{color:var(--green);font-weight:600}
+.benchmark-table .avg{color:var(--gold);font-weight:600}
+.benchmark-table .poor{color:var(--red);font-weight:600}
+
+/* ============ TIMELINE ============ */
+.timeline{display:flex;gap:16px;margin:20px 0;position:relative}
+.timeline::before{content:'';position:absolute;top:36px;left:4%;right:4%;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.2))}
+.tl-node{flex:1;text-align:center;position:relative;z-index:2}
+.tl-node .dot{width:18px;height:18px;background:var(--gold);border-radius:50%;margin:28px auto 14px;box-shadow:0 0 0 5px var(--bg),0 0 0 6px var(--gold)}
+.tl-node .phase{font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.tl-node .title{font-size:15px;color:var(--text);font-weight:600;margin-bottom:6px}
+.tl-node .desc{font-size:11.5px;color:var(--text-muted);line-height:1.5}
+
+/* ============ BUDGET PIE ============ */
+.pie-wrap{display:flex;align-items:center;gap:40px;padding:20px 0}
+.pie{width:260px;height:260px;flex-shrink:0}
+.legend{flex:1;display:flex;flex-direction:column;gap:14px}
+.legend-item{display:flex;align-items:center;gap:14px;padding:12px 16px;background:rgba(255,255,255,.03);border-radius:4px;border-left:3px solid var(--gold)}
+.legend-item .swatch{width:16px;height:16px;border-radius:3px;flex-shrink:0}
+.legend-item .info{flex:1}
+.legend-item .info .name{font-size:13px;color:var(--text);font-weight:600;margin-bottom:2px}
+.legend-item .info .desc{font-size:11px;color:var(--text-muted)}
+.legend-item .pct{font-size:16px;color:var(--gold);font-weight:700;min-width:50px;text-align:right}
+
+/* ============ FUNNEL ============ */
+.funnel{display:flex;flex-direction:column;align-items:center;gap:10px;margin:20px 0}
+.funnel-stage{padding:18px 40px;text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:4px;position:relative;transition:all .3s}
+.funnel-stage:hover{border-color:var(--gold);transform:scale(1.02)}
+.funnel-stage .lbl{font-size:11px;letter-spacing:2.5px;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.funnel-stage .desc{font-size:14px;color:var(--text);font-weight:500;max-width:540px}
+.funnel-arrow{color:var(--gold);font-size:22px}
+
+/* ============ CTA SLIDE ============ */
+.cta{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px;background:radial-gradient(ellipse at bottom,#1A2454 0%,var(--bg) 60%)}
+.cta .kicker{font-size:11px;letter-spacing:5px;color:var(--gold);font-weight:600;margin-bottom:30px;text-transform:uppercase}
+.cta h1{font-size:64px;font-weight:800;letter-spacing:-1.2px;line-height:1.1;max-width:1050px;margin-bottom:24px}
+.cta h1 em{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-weight:500}
+.cta .sub{font-size:18px;color:var(--text-muted);max-width:720px;margin-bottom:48px;line-height:1.6}
+.cta .btn{display:inline-block;padding:18px 44px;background:var(--gold);color:var(--bg);font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;border-radius:3px;text-decoration:none;transition:all .3s;cursor:pointer;border:none}
+.cta .btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,168,76,.3)}
+.cta .contact{margin-top:50px;display:flex;gap:40px;font-size:13px;color:var(--text-muted)}
+.cta .contact span strong{color:var(--gold);display:block;font-size:10px;letter-spacing:2px;margin-bottom:4px;text-transform:uppercase}
+
+/* ============ NAV BAR ============ */
+.nav{position:fixed;bottom:0;left:0;right:0;height:60px;background:rgba(10,15,44,.92);backdrop-filter:blur(14px);border-top:1px solid var(--border-soft);display:flex;align-items:center;justify-content:space-between;padding:0 30px;z-index:50}
+.nav .left{display:flex;align-items:center;gap:18px}
+.nav .counter{font-size:12px;color:var(--text-muted);letter-spacing:1px;font-weight:500}
+.nav .counter .cur{color:var(--gold);font-weight:700}
+.nav .title{font-size:12px;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;font-weight:500}
+.nav .dots{display:flex;gap:6px;align-items:center}
+.nav .dots .dot{width:7px;height:7px;border-radius:50%;background:var(--text-dim);cursor:pointer;transition:all .25s;opacity:.4}
+.nav .dots .dot.active{background:var(--gold);opacity:1;transform:scale(1.4);box-shadow:0 0 8px var(--gold)}
+.nav .dots .dot:hover{opacity:1}
+.nav .arrows{display:flex;gap:10px}
+.nav .arr{width:36px;height:36px;border:1px solid var(--border);background:transparent;color:var(--gold);cursor:pointer;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .25s}
+.nav .arr:hover{background:var(--gold);color:var(--bg)}
+.nav .arr:disabled{opacity:.3;cursor:not-allowed}
+
+/* ============ UTIL ============ */
+.pill{display:inline-block;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.pill-gold{background:var(--gold-soft);color:var(--gold);border:1px solid var(--border)}
+.pill-green{background:rgba(123,203,159,.1);color:var(--green);border:1px solid rgba(123,203,159,.3)}
+.pill-blue{background:rgba(123,174,219,.1);color:var(--blue);border:1px solid rgba(123,174,219,.3)}
+.pill-red{background:rgba(229,115,115,.1);color:var(--red);border:1px solid rgba(229,115,115,.3)}
+
+.slide::-webkit-scrollbar{width:8px}
+.slide::-webkit-scrollbar-track{background:transparent}
+.slide::-webkit-scrollbar-thumb{background:rgba(201,168,76,.2);border-radius:4px}
+.slide::-webkit-scrollbar-thumb:hover{background:rgba(201,168,76,.4)}
+
+/* ============ PLAN LIST ============ */
+.plan-list{display:flex;flex-direction:column;gap:10px}
+.plan-row{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:16px 20px;background:var(--surface);border-left:3px solid var(--gold);border-radius:4px;align-items:start}
+.plan-row .mo{font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:700;text-transform:uppercase;padding-top:4px}
+.plan-row .content-block h4{font-size:15px;color:var(--text);font-weight:600;margin-bottom:8px}
+.plan-row .content-block p{font-size:13px;color:var(--text-muted);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+<!-- ============ SLIDE 1: COVER ============ -->
+<section class="slide active cover" data-title="Cover">
+  <div class="pretag">Confidential — Client Strategy Document</div>
+  <h1>Amrut Pharma<br><em>Performance Review</em> &amp; National Expansion Blueprint</h1>
+  <div class="gold-line"></div>
+  <div class="sub">A strategic review of Meta Ads awareness campaigns across Gulkand, Adulsa, Medicated Lozenges, Malam, and the broader Ayurvedic range — and a phased roadmap to take the brand into Kerala, Gujarat, Chhattisgarh, and Madhya Pradesh.</div>
+  <div class="meta-row">
+    <div class="item"><div class="label">Prepared For</div><div class="val">Amrut Pharma</div></div>
+    <div class="item"><div class="label">Prepared By</div><div class="val">Futuready Media</div></div>
+    <div class="item"><div class="label">Period Reviewed</div><div class="val">Jul 2025 — Apr 2026</div></div>
+    <div class="item"><div class="label">Document Type</div><div class="val">Strategy &amp; Expansion Plan</div></div>
+  </div>
+  <div class="footer-brand">Futuready Media</div>
+</section>
+
+<!-- ============ SLIDE 2: CORE THOUGHT ============ -->
+<section class="slide thought" data-title="Core Thought">
+  <div class="kicker">The Core Thought</div>
+  <div class="quote">Ayurveda is already <span>India's heritage.</span><br>Our job is to make Amrut its <span>default choice.</span></div>
+  <div class="underline"></div>
+  <div class="sub">Four regional strongholds. Twelve live campaigns. Five product categories. The foundation is set. The next 90 days decide whether Amrut becomes a regional brand — or a national one.</div>
+</section>
+
+<!-- ============ SLIDE 3: EXECUTIVE SUMMARY ============ -->
+<section class="slide" data-title="Executive Summary">
+  <div class="slide-meta"><span class="tag">Section 01</span><span class="brand">Amrut Pharma × Futuready Media</span></div>
+  <div class="content">
+    <h1 class="slide-title">Executive <span class="accent">Summary</span></h1>
+    <p class="slide-sub">A consolidated snapshot of nine months of Meta Ads activity — twelve distinct awareness and traffic campaigns spanning five product categories, deployed across twenty-plus Indian states. The portfolio is active, diverse, and ready for structured scaling.</p>
+
+    <div class="metric-grid">
+      <div class="metric"><div class="num">12</div><div class="lbl">Campaigns Deployed</div><div class="sub">Across 5 product categories</div></div>
+      <div class="metric"><div class="num">9</div><div class="lbl">Months of Activity</div><div class="sub">Jul 2025 — Apr 2026</div></div>
+      <div class="metric"><div class="num">3+3</div><div class="lbl">Core + Pan-India</div><div class="sub">Focused + broad-reach tests run</div></div>
+      <div class="metric"><div class="num">4</div><div class="lbl">Expansion States</div><div class="sub">Ready for structured rollout</div></div>
+    </div>
+
+    <div class="two-col">
+      <div class="panel gold">
+        <h3>Key Highlights</h3>
+        <ul>
+          <li>Five distinct product lines actively promoted — <strong>Gulkand, Adulsa, Lozenges, Malam, and the broader Ayurvedic range</strong>.</li>
+          <li>Core markets — <strong>Maharashtra, Goa, Karnataka</strong> — consistently present in high-focus traffic and awareness campaigns.</li>
+          <li>Pan-India awareness tested at scale through the <strong>Pama Malam reach campaign</strong> — covering 30+ states/UTs.</li>
+          <li>Lead-gen tested through a dedicated <strong>WhatsApp campaign</strong> — active inbound channel validated.</li>
+          <li>Gulkand <strong>seasonal window (Summer 2026)</strong> already activated with two parallel creatives plus a traffic layer.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Overall Direction</h3>
+        <ul>
+          <li><strong>Phase 1 complete</strong> — category awareness established in core states across the full product portfolio.</li>
+          <li><strong>Current gap</strong> — no structured sequencing between awareness, retargeting, and conversion. The funnel is flat.</li>
+          <li><strong>Expansion-ready</strong> — Kerala already seeded via WhatsApp lead-gen and Gulkand Traffic; Gujarat and Chhattisgarh partially seeded via Adulsa and Malam awareness.</li>
+          <li><strong>Next 90 days</strong> should focus on funnel depth, regional localization, and budget concentration in 3–4 winning state-product combinations.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 4: CAMPAIGN OVERVIEW TABLE ============ -->
+<section class="slide" data-title="Campaign Overview">
+  <div class="slide-meta"><span class="tag">Section 02</span><span class="brand">Campaign Portfolio</span></div>
+  <div class="content">
+    <h1 class="slide-title">Campaign <span class="accent">Overview</span></h1>
+    <p class="slide-sub">Twelve campaigns, five product categories, nine months of runtime. Ten campaigns remain active — giving Amrut a continuous presence across Meta's awareness and traffic inventory.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl-compact">
+        <thead>
+          <tr>
+            <th>Campaign Name</th>
+            <th>Category</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Location Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="accent">Gulkand 1</td><td>Gulkand</td><td>10 Mar 2026</td><td>30 Apr 2026</td><td class="muted">Maharashtra, Goa, Karnataka</td></tr>
+          <tr><td class="accent">Gulkand 2</td><td>Gulkand</td><td>10 Mar 2026</td><td>31 Mar 2026</td><td class="muted">Maharashtra, Goa, Karnataka</td></tr>
+          <tr><td class="accent">Gulkand Traffic</td><td>Gulkand</td><td>14 Apr 2026</td><td><span class="pill pill-green">Ongoing</span></td><td class="muted">MH, Goa, KA, Kerala, UP</td></tr>
+          <tr><td class="accent">Adulsa Awareness MH</td><td>Adulsa</td><td>02 Sep 2025</td><td><span class="pill pill-green">Ongoing</span></td><td class="muted">MH + 12 broader states</td></tr>
+          <tr><td class="accent">Adulsa Traffic</td><td>Adulsa</td><td>11 Nov 2025</td><td><span class="pill pill-green">Ongoing</span></td><td class="muted">MH, Goa, KA, Jharkhand</td></tr>
+          <tr><td class="accent">Lozenges</td><td>Medicated Lozenges</td><td>08 Oct 2025</td><td><span class="pill pill-green">Ongoing</span></td><td class="muted">Maharashtra</td></tr>
+          <tr><td class="accent">Lozenges Traffic</td><td>Medicated Lozenges</td><td>11 Nov 2025</td><td><span class="pill pill-green">Ongoing</span></td><td class="muted">MH, Goa, KA, UP</td></tr>
+          <tr><td class="accent">Amrut Malam</td><td>Malam</td><td>22 Aug 2025</td><td><span class="pill pill-green">Ongoing</span></td><td class="muted">MH, MP, CG, AP, TN, Odisha +2</td></tr>
+          <tr><td class="accent">Pama Malam Reach</td><td>Malam</td><td>30 Sep 2025</td><td><span class="pill pill-green">Ongoing</span></td><td class="muted">Pan-India (37 states/UTs)</td></tr>
+          <tr><td class="accent">Pama Traffic</td><td>Malam</td><td>11 Nov 2025</td><td><span class="pill pill-green">Ongoing</span></td><td class="muted">MH, Goa, KA, UP, Bihar</td></tr>
+          <tr><td class="accent">Amrut Traffic</td><td>Ayurvedic Range</td><td>11 Nov 2025</td><td><span class="pill pill-green">Ongoing</span></td><td class="muted">Maharashtra, Goa, Karnataka</td></tr>
+          <tr><td class="accent">Amrut WhatsApp Lead Gen</td><td>Ayurvedic Range</td><td>25 Jul 2025</td><td>31 Jul 2025</td><td class="muted">MH, Goa, KA, Kerala, AP, TG, CG, MP</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 5: LOCATION-WISE ANALYSIS ============ -->
+<section class="slide" data-title="Location Analysis">
+  <div class="slide-meta"><span class="tag">Section 03</span><span class="brand">Geographic Intelligence</span></div>
+  <div class="content">
+    <h1 class="slide-title">Location-Wise <span class="accent">Performance Analysis</span></h1>
+    <p class="slide-sub">States ranked by strategic presence — frequency of campaign activation, category depth, and funnel coverage. This is not a spend view; it is a presence and opportunity view.</p>
+
+    <div class="two-col">
+      <div class="panel gold">
+        <h3>Top-Performing Markets (Core)</h3>
+        <div class="state-bar"><div class="name">Maharashtra</div><div class="bar"><div class="fill" style="width:100%"></div></div><div class="val">11 / 12</div></div>
+        <div class="state-bar"><div class="name">Karnataka</div><div class="bar"><div class="fill" style="width:82%"></div></div><div class="val">9 / 12</div></div>
+        <div class="state-bar"><div class="name">Goa</div><div class="bar"><div class="fill" style="width:82%"></div></div><div class="val">9 / 12</div></div>
+        <div class="state-bar"><div class="name">Uttar Pradesh</div><div class="bar"><div class="fill" style="width:45%"></div></div><div class="val">5 / 12</div></div>
+        <div class="state-bar"><div class="name">Chhattisgarh</div><div class="bar"><div class="fill" style="width:36%"></div></div><div class="val">4 / 12</div></div>
+        <div class="state-bar"><div class="name">Madhya Pradesh</div><div class="bar"><div class="fill" style="width:36%"></div></div><div class="val">4 / 12</div></div>
+        <div class="state-bar"><div class="name">Kerala</div><div class="bar"><div class="fill" style="width:27%"></div></div><div class="val">3 / 12</div></div>
+        <div class="state-bar"><div class="name">Gujarat</div><div class="bar"><div class="fill" style="width:27%"></div></div><div class="val">3 / 12</div></div>
+        <p style="margin-top:12px;font-size:11px;color:var(--text-dim);font-style:italic">Ranking by number of campaigns the state appears in. Core markets dominate all five product categories.</p>
+      </div>
+
+      <div class="panel">
+        <h3>Strategic Reading</h3>
+        <ul>
+          <li><strong>Maharashtra is the engine.</strong> Present in all product categories and every campaign type — awareness, traffic, lead-gen. This is the only state where the full portfolio has been tested.</li>
+          <li><strong>Karnataka &amp; Goa are reliable anchors.</strong> Consistent presence across awareness + traffic. Lower media clutter than MH — high efficiency potential.</li>
+          <li><strong>Uttar Pradesh is the unplanned opportunity.</strong> Despite not being a declared target, UP has organically qualified into five campaigns — a clear signal of Hindi-belt pull.</li>
+          <li><strong>Chhattisgarh &amp; MP are half-seeded.</strong> Both states are already in the Amrut Malam and Pama Reach pool — expansion is a <em>deepening</em> exercise, not a cold start.</li>
+          <li><strong>Kerala &amp; Gujarat are discovery-ready.</strong> Both have been touched via WhatsApp and Pan-India campaigns — next step is category-specific validation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:20px">
+      <h3>Emerging / Organic State Signals</h3>
+      <div class="three-col">
+        <div>
+          <div class="pill pill-blue">Hindi Belt Emergence</div>
+          <p style="color:var(--text-muted);font-size:13px;line-height:1.6;margin-top:10px">Uttar Pradesh, Bihar, and Jharkhand have naturally entered the campaign footprint — primarily via Pama Malam Reach and the Traffic cohort. These represent low-CPM, high-reach opportunities if localized.</p>
+        </div>
+        <div>
+          <div class="pill pill-green">Western Corridor Ready</div>
+          <p style="color:var(--text-muted);font-size:13px;line-height:1.6;margin-top:10px">Gujarat is adjacent to the Maharashtra core — culturally familiar with Ayurveda, strong D2C buying power. Already present in Adulsa Awareness + Pama Pan-India.</p>
+        </div>
+        <div>
+          <div class="pill pill-gold">South Untapped</div>
+          <p style="color:var(--text-muted);font-size:13px;line-height:1.6;margin-top:10px">Kerala (Ayurveda's birthplace) and Tamil Nadu have only seen broad awareness exposure. Dedicated category campaigns in Malayalam/Tamil represent the single largest upside lever.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 6: INDUSTRY BENCHMARKS ============ -->
+<section class="slide" data-title="Industry Benchmarks">
+  <div class="slide-meta"><span class="tag">Section 04</span><span class="brand">Meta Ads — India Pharma / Ayurveda</span></div>
+  <div class="content">
+    <h1 class="slide-title">Industry <span class="accent">Benchmarks</span></h1>
+    <p class="slide-sub">Reference ranges for awareness campaigns in the Indian Pharma &amp; Ayurveda category on Meta. Use these as calibration targets — not absolutes. Creative quality and audience definition move these numbers by 30–50% in either direction.</p>
+
+    <div class="tbl-wrap">
+      <table class="benchmark-table">
+        <thead>
+          <tr>
+            <th style="text-align:left">Metric</th>
+            <th>Good</th>
+            <th>Average</th>
+            <th>Poor</th>
+            <th style="text-align:left">What it tells us</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CPM (Reach / Awareness)</td>
+            <td class="good">₹40 – ₹80</td>
+            <td class="avg">₹80 – ₹150</td>
+            <td class="poor">₹150+</td>
+            <td style="text-align:left;color:var(--text-muted);font-size:12.5px">Cost to reach 1,000 users. Pharma/Ayurveda typically runs leaner than FMCG.</td>
+          </tr>
+          <tr>
+            <td>CPM (Video Views)</td>
+            <td class="good">₹60 – ₹120</td>
+            <td class="avg">₹120 – ₹220</td>
+            <td class="poor">₹220+</td>
+            <td style="text-align:left;color:var(--text-muted);font-size:12.5px">Video awareness tends to price higher than static reach.</td>
+          </tr>
+          <tr>
+            <td>CTR (Link Click)</td>
+            <td class="good">1.5% – 3%+</td>
+            <td class="avg">0.8% – 1.5%</td>
+            <td class="poor">&lt; 0.8%</td>
+            <td style="text-align:left;color:var(--text-muted);font-size:12.5px">Below 0.8% = creative or targeting issue. Above 2% = strong hook.</td>
+          </tr>
+          <tr>
+            <td>CPC (Link Click)</td>
+            <td class="good">₹3 – ₹8</td>
+            <td class="avg">₹8 – ₹18</td>
+            <td class="poor">₹18+</td>
+            <td style="text-align:left;color:var(--text-muted);font-size:12.5px">Regional-language creatives typically price at the lower end.</td>
+          </tr>
+          <tr>
+            <td>Frequency (Awareness)</td>
+            <td class="good">1.8 – 3.5</td>
+            <td class="avg">3.5 – 5</td>
+            <td class="poor">5+</td>
+            <td style="text-align:left;color:var(--text-muted);font-size:12.5px">Below 1.8 = under-exposure. Above 5 = creative fatigue — rotate assets.</td>
+          </tr>
+          <tr>
+            <td>Video Thru-Play Rate</td>
+            <td class="good">12% – 20%+</td>
+            <td class="avg">6% – 12%</td>
+            <td class="poor">&lt; 6%</td>
+            <td style="text-align:left;color:var(--text-muted);font-size:12.5px">Share of viewers who watch 15s or 97% of the video.</td>
+          </tr>
+          <tr>
+            <td>3s Video View Rate</td>
+            <td class="good">40% – 60%+</td>
+            <td class="avg">25% – 40%</td>
+            <td class="poor">&lt; 25%</td>
+            <td style="text-align:left;color:var(--text-muted);font-size:12.5px">Reads how well the first 3 seconds hook the audience.</td>
+          </tr>
+          <tr>
+            <td>CPLP View (Landing Page)</td>
+            <td class="good">₹5 – ₹15</td>
+            <td class="avg">₹15 – ₹30</td>
+            <td class="poor">₹30+</td>
+            <td style="text-align:left;color:var(--text-muted);font-size:12.5px">Cost per landing page view — gateway to commerce/lead funnels.</td>
+          </tr>
+          <tr>
+            <td>Cost per WhatsApp Lead</td>
+            <td class="good">₹12 – ₹40</td>
+            <td class="avg">₹40 – ₹90</td>
+            <td class="poor">₹90+</td>
+            <td style="text-align:left;color:var(--text-muted);font-size:12.5px">For Ayurveda/health D2C, WhatsApp is typically the cheapest lead source.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:11.5px;color:var(--text-dim);font-style:italic;padding:0 4px">Benchmarks indicative of Tier 1/2 Indian metros, Meta Advantage+ enabled, Hindi-English mixed creative. South Indian language markets typically deliver 15–25% lower CPM due to auction density.</p>
+  </div>
+</section>
+
+<!-- ============ SLIDE 7: KEY INSIGHTS ============ -->
+<section class="slide" data-title="Key Insights">
+  <div class="slide-meta"><span class="tag">Section 05</span><span class="brand">What the Data Is Telling Us</span></div>
+  <div class="content">
+    <h1 class="slide-title">Key <span class="accent">Insights</span></h1>
+    <p class="slide-sub">Five observations that should drive every decision in the next rollout cycle.</p>
+
+    <div class="two-col">
+      <div class="panel gold">
+        <h3>What's Working</h3>
+        <ul>
+          <li><strong>Portfolio diversification.</strong> Running five product categories in parallel has built a meaningful content library — a major asset for retargeting and cross-sell.</li>
+          <li><strong>Core market density.</strong> Maharashtra, Goa, and Karnataka act as a stable test bed — insights here are statistically reliable and can be extrapolated to expansion states.</li>
+          <li><strong>The Pama Malam Pan-India reach campaign</strong> — running since September — has already identified the low-CPM states. That learning should now be used to cherry-pick, not broadcast.</li>
+          <li><strong>Traffic-layer activation</strong> on 11 Nov across five campaigns shows the team has recognized the need to move beyond pure awareness — that's the right instinct.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>What Needs Rethinking</h3>
+        <ul>
+          <li><strong>No structured funnel.</strong> Awareness, Traffic, and Lead-Gen are running as parallel silos rather than a sequenced journey. Audiences warmed up on Awareness aren't being retargeted on Conversion.</li>
+          <li><strong>Too many "Unknown" placements.</strong> A meaningful share of impressions is landing in unclassified regions — likely targeting broadness that needs tightening.</li>
+          <li><strong>Lozenges is MH-only.</strong> Given the product's strong seasonal relevance (cough/cold monsoon + winter), this is a clear under-deployment.</li>
+          <li><strong>WhatsApp Lead-Gen ran for 6 days only.</strong> The channel was validated then shut off — it should be a permanent always-on layer, not a one-time test.</li>
+          <li><strong>No regional language creative layering visible in campaign naming</strong> — which suggests the same creative is running nationally.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:20px">
+      <h3>Market &amp; Audience Behavior Patterns</h3>
+      <div class="three-col">
+        <div>
+          <div class="pill pill-gold">Seasonal Stacking</div>
+          <p style="color:var(--text-muted);font-size:13px;line-height:1.6;margin-top:10px">Gulkand peaks Mar–Jun (summer cooling). Lozenges peak Oct–Feb (winter throat). Malam is year-round but spikes in monsoon. Adulsa aligns with cough season. The category is inherently seasonal — campaigns should be, too.</p>
+        </div>
+        <div>
+          <div class="pill pill-blue">Language as Trust Signal</div>
+          <p style="color:var(--text-muted);font-size:13px;line-height:1.6;margin-top:10px">Ayurvedic categories perform 2–3× better when creative is in the viewer's native script — not dubbed, but authored. Marathi in MH, Kannada in KA, Malayalam in Kerala, Gujarati in Gujarat.</p>
+        </div>
+        <div>
+          <div class="pill pill-green">Trust &gt; Discount</div>
+          <p style="color:var(--text-muted);font-size:13px;line-height:1.6;margin-top:10px">Unlike D2C beauty/FMCG, Ayurveda buyers respond to heritage, safety, and endorsement — not price drops. Founder-led content, vaidya/doctor quotes, and product-source stories outperform offer-led creatives.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 8: EXPANSION STRATEGY INTRO ============ -->
+<section class="slide" data-title="Expansion Strategy">
+  <div class="slide-meta"><span class="tag">Section 06</span><span class="brand">National Expansion Blueprint</span></div>
+  <div class="content">
+    <h1 class="slide-title">The <span class="accent">Expansion</span> Strategy</h1>
+    <p class="slide-sub">A phased, evidence-led approach to entering Kerala, Gujarat, Chhattisgarh, and Madhya Pradesh — built on the data already sitting inside the Pama Pan-India campaign.</p>
+
+    <div class="timeline">
+      <div class="tl-node">
+        <div class="dot"></div>
+        <div class="phase">Phase 01 • Month 1</div>
+        <div class="title">Seed &amp; Validate</div>
+        <div class="desc">Launch category-specific awareness in Gujarat &amp; Kerala. Tight audiences, regional-language creatives, 2-week read window.</div>
+      </div>
+      <div class="tl-node">
+        <div class="dot"></div>
+        <div class="phase">Phase 02 • Month 2</div>
+        <div class="title">Deepen &amp; Retarget</div>
+        <div class="desc">Activate Chhattisgarh &amp; MP (already half-seeded via Malam). Layer retargeting on all four states. Introduce WhatsApp as the conversion endpoint.</div>
+      </div>
+      <div class="tl-node">
+        <div class="dot"></div>
+        <div class="phase">Phase 03 • Month 3</div>
+        <div class="title">Scale &amp; Lock-In</div>
+        <div class="desc">Concentrate budget behind the 2 best-performing new states. Move from reach to engagement + conversion KPIs. Build lookalikes from warm pools.</div>
+      </div>
+    </div>
+
+    <div class="three-col" style="margin-top:28px">
+      <div class="panel gold">
+        <h3>Kerala</h3>
+        <p><strong>Language:</strong> Malayalam-first, English secondary</p>
+        <p><strong>Lead Products:</strong> Malam, Adulsa, Gulkand</p>
+        <p><strong>Audience:</strong> 25–55, health-conscious, traditional Ayurveda buyers, women (gifting &amp; caregiver role)</p>
+        <p><strong>Creative Hook:</strong> "Where Ayurveda Comes Home" — play on Kerala's claim to the category</p>
+        <p><strong>Channels:</strong> Meta Reels + Stories, WhatsApp Click-to-Chat, Influencer seeding with Malayalam Ayurveda creators</p>
+      </div>
+      <div class="panel">
+        <h3>Gujarat</h3>
+        <p><strong>Language:</strong> Gujarati-first, Hindi secondary</p>
+        <p><strong>Lead Products:</strong> Gulkand, Malam, Lozenges</p>
+        <p><strong>Audience:</strong> 30–60, family decision-makers, strong preference for home-remedy brands, dense Tier-2/3 D2C base</p>
+        <p><strong>Creative Hook:</strong> Product-ritual storytelling — "Dadi ka nuskha, Amrut ki quality"</p>
+        <p><strong>Channels:</strong> Meta + Quick-commerce tie-in (Blinkit/Zepto), WhatsApp, Gujarati reel creators</p>
+      </div>
+      <div class="panel">
+        <h3>CG &amp; MP</h3>
+        <p><strong>Language:</strong> Hindi + Chhattisgarhi/Bagheli tonality</p>
+        <p><strong>Lead Products:</strong> Malam (already validated), Adulsa, Lozenges</p>
+        <p><strong>Audience:</strong> 25–55, value-conscious, Tier-2/3 cities (Raipur, Bhopal, Indore, Bilaspur, Jabalpur)</p>
+        <p><strong>Creative Hook:</strong> Functional + family — "Har ghar ka Ayurveda" positioning</p>
+        <p><strong>Channels:</strong> Meta Video-Views, WhatsApp for dealer enquiries, regional influencers (health &amp; home)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 9: BUDGET STRATEGY ============ -->
+<section class="slide" data-title="Budget Strategy">
+  <div class="slide-meta"><span class="tag">Section 07</span><span class="brand">Investment Framework</span></div>
+  <div class="content">
+    <h1 class="slide-title">Budget <span class="accent">Strategy</span></h1>
+    <p class="slide-sub">A recommendation-led framework built around Meta's delivery mechanics — learning-phase stability, auction competitiveness, and reach efficiency.</p>
+
+    <div class="two-col">
+      <div class="panel gold">
+        <h3>A. Recommended Daily Budget Range</h3>
+        <p style="font-size:15px;color:var(--text)"><strong style="color:var(--gold);font-size:22px">₹6,000 — ₹12,000 / day</strong> across the active portfolio during the expansion phase.</p>
+        <p>This range is calibrated for:</p>
+        <ul>
+          <li>At least <strong>50 optimization events per week</strong> per ad set (Meta's learning-phase exit threshold).</li>
+          <li>Parallel activity across <strong>4–6 state clusters</strong> without under-delivering in any.</li>
+          <li>Frequency in the <strong>2.5–3.5 range</strong> — enough for message recall without fatigue.</li>
+          <li>Buffer for <strong>A/B creative testing</strong> in every new state entry.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>D. Budget-to-Outcome Logic</h3>
+        <ul>
+          <li><strong>Reach:</strong> Budget × region size determines achievable unique reach. Under-budgeted campaigns oscillate — they never stabilize.</li>
+          <li><strong>Frequency:</strong> Reach without frequency = wasted spend. Sustained budget for 3+ weeks is what drives recall.</li>
+          <li><strong>Learning Phase:</strong> Ad sets under ₹800/day rarely exit learning — Meta cannot optimize on thin signal volume.</li>
+          <li><strong>Cost Efficiency:</strong> Splitting budget across too many ad sets is the single biggest efficiency killer. Consolidation > proliferation.</li>
+          <li><strong>Rule of thumb:</strong> <em>Fewer, fuller ad sets outperform many starved ones.</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:20px">
+      <h3>B. State-Wise Budget Allocation (Expansion Phase)</h3>
+      <div class="pie-wrap">
+        <svg class="pie" viewBox="0 0 42 42">
+          <!-- donut math: circumference = 100 -->
+          <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="#0E1530" stroke-width="7"/>
+          <!-- MH 28% -->
+          <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="#C9A84C" stroke-width="7"
+            stroke-dasharray="28 72" stroke-dashoffset="25" transform="rotate(-90 21 21)"/>
+          <!-- KA 14% -->
+          <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="#E8C96A" stroke-width="7"
+            stroke-dasharray="14 86" stroke-dashoffset="-3" transform="rotate(-90 21 21)"/>
+          <!-- Goa 8% -->
+          <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="#B89440" stroke-width="7"
+            stroke-dasharray="8 92" stroke-dashoffset="-17" transform="rotate(-90 21 21)"/>
+          <!-- Kerala 14% -->
+          <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="#7BAEDB" stroke-width="7"
+            stroke-dasharray="14 86" stroke-dashoffset="-25" transform="rotate(-90 21 21)"/>
+          <!-- Gujarat 14% -->
+          <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="#7BCB9F" stroke-width="7"
+            stroke-dasharray="14 86" stroke-dashoffset="-39" transform="rotate(-90 21 21)"/>
+          <!-- MP 10% -->
+          <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="#9A7FBD" stroke-width="7"
+            stroke-dasharray="10 90" stroke-dashoffset="-53" transform="rotate(-90 21 21)"/>
+          <!-- CG 8% -->
+          <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="#D89580" stroke-width="7"
+            stroke-dasharray="8 92" stroke-dashoffset="-63" transform="rotate(-90 21 21)"/>
+          <!-- Test Pool 4% -->
+          <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="#6B7A9E" stroke-width="7"
+            stroke-dasharray="4 96" stroke-dashoffset="-71" transform="rotate(-90 21 21)"/>
+          <text x="21" y="20" text-anchor="middle" fill="#C9A84C" font-size="3.4" font-weight="700" font-family="Inter">Expansion</text>
+          <text x="21" y="24" text-anchor="middle" fill="#A0AECB" font-size="2.2" font-family="Inter">Budget Mix</text>
+        </svg>
+        <div class="legend">
+          <div class="legend-item" style="border-color:#C9A84C"><div class="swatch" style="background:#C9A84C"></div><div class="info"><div class="name">Maharashtra</div><div class="desc">Core — scale winners &amp; defend share</div></div><div class="pct">28%</div></div>
+          <div class="legend-item" style="border-color:#E8C96A"><div class="swatch" style="background:#E8C96A"></div><div class="info"><div class="name">Karnataka</div><div class="desc">Core — consistent performer</div></div><div class="pct">14%</div></div>
+          <div class="legend-item" style="border-color:#7BAEDB"><div class="swatch" style="background:#7BAEDB"></div><div class="info"><div class="name">Kerala (New)</div><div class="desc">Category-native market — high upside</div></div><div class="pct">14%</div></div>
+          <div class="legend-item" style="border-color:#7BCB9F"><div class="swatch" style="background:#7BCB9F"></div><div class="info"><div class="name">Gujarat (New)</div><div class="desc">Adjacent market — strong D2C base</div></div><div class="pct">14%</div></div>
+          <div class="legend-item" style="border-color:#9A7FBD"><div class="swatch" style="background:#9A7FBD"></div><div class="info"><div class="name">Madhya Pradesh</div><div class="desc">Partially seeded — deepen</div></div><div class="pct">10%</div></div>
+          <div class="legend-item" style="border-color:#B89440"><div class="swatch" style="background:#B89440"></div><div class="info"><div class="name">Goa</div><div class="desc">Core — lean efficiency play</div></div><div class="pct">8%</div></div>
+          <div class="legend-item" style="border-color:#D89580"><div class="swatch" style="background:#D89580"></div><div class="info"><div class="name">Chhattisgarh</div><div class="desc">Malam-led entry</div></div><div class="pct">8%</div></div>
+          <div class="legend-item" style="border-color:#6B7A9E"><div class="swatch" style="background:#6B7A9E"></div><div class="info"><div class="name">Test Pool (UP, Bihar)</div><div class="desc">Organic signal tracking</div></div><div class="pct">4%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 10: PHASED INVESTMENT + STRATEGIC REC ============ -->
+<section class="slide" data-title="Phased Investment">
+  <div class="slide-meta"><span class="tag">Section 07 (cont.)</span><span class="brand">Phased Investment Plan</span></div>
+  <div class="content">
+    <h1 class="slide-title">Phased <span class="accent">Investment</span> Plan</h1>
+    <p class="slide-sub">Three phases. Three distinct outcomes. Each phase's budget profile earns the right to the next.</p>
+
+    <div class="three-col">
+      <div class="panel gold">
+        <h3>Phase 1 — Seed</h3>
+        <p style="font-size:12px;color:var(--gold-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px"><strong>Month 1 • ~40% of monthly envelope</strong></p>
+        <ul>
+          <li><strong>Focus:</strong> Kerala + Gujarat entry; keep MH/KA/Goa on maintenance.</li>
+          <li><strong>Objective:</strong> Reach + Thru-Play in new states; validate creative-language fit.</li>
+          <li><strong>KPI:</strong> CPM, Video Thru-Play %, Saved/Shared content.</li>
+          <li><strong>Rule:</strong> Lock creative for 14 days — don't kill before learning.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>Phase 2 — Deepen</h3>
+        <p style="font-size:12px;color:var(--gold-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px"><strong>Month 2 • ~60% envelope uplift</strong></p>
+        <ul>
+          <li><strong>Focus:</strong> Activate CG + MP using Malam + Adulsa (warm categories).</li>
+          <li><strong>Objective:</strong> Layer retargeting + WhatsApp conversion across all 4 new states.</li>
+          <li><strong>KPI:</strong> CTR, Landing Page Views, WhatsApp CTR, Cost per Lead.</li>
+          <li><strong>Rule:</strong> Move 20% of budget to retargeting pool from week 3.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3>Phase 3 — Scale</h3>
+        <p style="font-size:12px;color:var(--gold-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px"><strong>Month 3 • Full envelope deployment</strong></p>
+        <ul>
+          <li><strong>Focus:</strong> Double down on top-2 new states; build lookalikes from all warm pools.</li>
+          <li><strong>Objective:</strong> Move from Reach → Engagement → Purchase/Lead KPIs.</li>
+          <li><strong>KPI:</strong> ROAS, Cost per Purchase, Repeat Rate, CPL &lt; ₹40.</li>
+          <li><strong>Rule:</strong> Consolidate ad sets — fewer, better-funded groups.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel gold" style="margin-top:20px;border-left:4px solid var(--gold)">
+      <h3>E. Strategic Recommendation</h3>
+      <p style="font-size:15.5px;color:var(--text);line-height:1.75">To deliver meaningful expansion outcomes — not just impressions — Amrut Pharma should plan an investment envelope sufficient to run <strong style="color:var(--gold)">6–8 well-funded ad sets per state</strong> across 6–8 states, with a dedicated <strong style="color:var(--gold)">always-on retargeting + WhatsApp conversion pool</strong>. Budget should be sized to give every ad set a minimum 14-day learning window before optimization decisions are made. Under-investment — spreading spend thin across too many geographies and creatives — is the primary reason Ayurveda brands plateau at ₹1 Cr ARR. Concentrated, patient capital deployment is how brands break through.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 11: WHAT MORE CAN BE DONE ============ -->
+<section class="slide" data-title="What More Can Be Done">
+  <div class="slide-meta"><span class="tag">Section 08</span><span class="brand">Beyond the Ad Account</span></div>
+  <div class="content">
+    <h1 class="slide-title">What More Can <span class="accent">Be Done</span></h1>
+    <p class="slide-sub">Paid media is the spark. The fire needs a full funnel, a conversion layer, and a cultural/community strategy to actually compound.</p>
+
+    <div class="funnel">
+      <div class="funnel-stage" style="width:100%">
+        <div class="lbl">Stage 01 — Awareness</div>
+        <div class="desc">Meta Reels + Stories + Pan-India Reach. Regional creatives. Product education.</div>
+      </div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-stage" style="width:85%">
+        <div class="lbl">Stage 02 — Consideration / Engagement</div>
+        <div class="desc">Video Views 75%+ retargeting, Profile Visits, Website Visits, Product-page views.</div>
+      </div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-stage" style="width:70%">
+        <div class="lbl">Stage 03 — Intent</div>
+        <div class="desc">WhatsApp Click-to-Chat, Cart Adds, Amazon/Flipkart driven store visits, Quick-commerce placement.</div>
+      </div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-stage" style="width:55%">
+        <div class="lbl">Stage 04 — Conversion</div>
+        <div class="desc">Purchase / Lead Submit / Dealer Enquiry. Custom audiences built for each product category.</div>
+      </div>
+      <div class="funnel-arrow">▼</div>
+      <div class="funnel-stage" style="width:40%">
+        <div class="lbl">Stage 05 — Retention &amp; Advocacy</div>
+        <div class="desc">WhatsApp broadcast list, reorder nudges, seasonal bundles, UGC incentivization.</div>
+      </div>
+    </div>
+
+    <div class="three-col" style="margin-top:20px">
+      <div class="panel">
+        <h3>WhatsApp Marketing</h3>
+        <ul>
+          <li>Click-to-WA CTAs on every ad — not just lead-gen campaigns.</li>
+          <li>Always-on WA Business catalog with full Amrut product range.</li>
+          <li>Seasonal broadcast bursts (Gulkand summer, Lozenges winter).</li>
+          <li>WA funnel as cheapest channel for Ayurveda D2C — typical CPL ₹25–45.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Influencer Strategy</h3>
+        <ul>
+          <li><strong>Tier 1:</strong> Ayurveda doctors &amp; vaidyas (trust / authority).</li>
+          <li><strong>Tier 2:</strong> Regional home-remedy creators — Marathi, Malayalam, Gujarati, Hindi-belt.</li>
+          <li><strong>Tier 3:</strong> Mom-influencers &amp; wellness micro-creators (5k–50k).</li>
+          <li>Barter + paid hybrid; focus on Reels + Carousels, not static posts.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Product-Specific Campaigns</h3>
+        <ul>
+          <li><strong>Gulkand:</strong> Summer ritual, rose-harvest storytelling, gifting during weddings.</li>
+          <li><strong>Adulsa:</strong> Monsoon cough prevention, child-safe positioning.</li>
+          <li><strong>Lozenges:</strong> Winter + travel/allergy triggers, office desk positioning.</li>
+          <li><strong>Malam:</strong> Year-round pain-relief, post-workout &amp; elderly caregiver use cases.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:20px">
+      <div class="panel gold">
+        <h3>Regional Creative Playbook</h3>
+        <ul>
+          <li>One master script → adapted across 4–5 regional languages (not auto-translated; authored).</li>
+          <li>State-specific cultural anchors — e.g., Gujarati festivals for Gulkand, Onam for Kerala, Ganesh Chaturthi for MH.</li>
+          <li>Voice-over by native speakers. Talent from the region — not pan-India models.</li>
+          <li>Formats: Reels (9:16), Carousels (1:1), Story-sized ads (9:16), Collection ads for product range.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Retention &amp; Community</h3>
+        <ul>
+          <li>Monthly "Amrut Ayurveda Almanac" — content asset across WA, email, social.</li>
+          <li>Reorder reminder flows on WhatsApp (30/60/90-day triggers).</li>
+          <li>User-generated recipe / use-case contests for Gulkand &amp; Adulsa.</li>
+          <li>Dedicated dealer/distributor WA broadcast group for B2B-side growth.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 12: WAY FORWARD ============ -->
+<section class="slide" data-title="Way Forward">
+  <div class="slide-meta"><span class="tag">Section 09</span><span class="brand">90-Day Action Plan</span></div>
+  <div class="content">
+    <h1 class="slide-title">Way <span class="accent">Forward</span> — 90-Day Plan</h1>
+    <p class="slide-sub">A month-by-month rollout calendar. Every action has an owner, an output, and a measurement window.</p>
+
+    <div class="plan-list">
+      <div class="plan-row">
+        <div class="mo">Month 1</div>
+        <div class="content-block">
+          <h4>Foundation &amp; Seeding</h4>
+          <p>• Campaign audit + restructure: kill overlap, consolidate ad sets, clean "Unknown" placements. <br>
+          • Launch <strong>Kerala (Malayalam) + Gujarat (Gujarati)</strong> Malam &amp; Gulkand awareness campaigns. <br>
+          • Reactivate <strong>WhatsApp Lead-Gen</strong> as always-on layer across MH, KA, Goa, Kerala. <br>
+          • Build retargeting audiences from all warm pools (Video 75% + LP visits). <br>
+          • Produce regional creative batch 1 — 3 scripts × 4 languages × 2 formats = 24 assets.</p>
+        </div>
+      </div>
+
+      <div class="plan-row">
+        <div class="mo">Month 2</div>
+        <div class="content-block">
+          <h4>Deepening &amp; Funnel Activation</h4>
+          <p>• Activate <strong>Chhattisgarh &amp; MP</strong> campaigns — Malam lead, Adulsa + Lozenges layered. <br>
+          • Deploy Stage 2 &amp; 3 retargeting (Video viewers → Landing page → WhatsApp). <br>
+          • Initiate <strong>influencer seeding</strong> — Tier 2 &amp; 3 creators in all 7 states. <br>
+          • Launch product-specific campaign clusters (Gulkand summer push in all core + new). <br>
+          • Weekly optimization reviews; bi-weekly creative refresh for fatigued ad sets.</p>
+        </div>
+      </div>
+
+      <div class="plan-row">
+        <div class="mo">Month 3</div>
+        <div class="content-block">
+          <h4>Scale &amp; Lock-In</h4>
+          <p>• Identify top-2 new states by CTR + CPLP View + WhatsApp CPL — concentrate 60% of new-state budget there. <br>
+          • Shift from Reach to <strong>Conversion / Lead</strong> objectives on warm audiences. <br>
+          • Deploy lookalike audiences built from retargeting pools. <br>
+          • Integrate <strong>Quick-commerce placement</strong> (Blinkit / Zepto / Swiggy Instamart) tie-ups in MH, KA, Guj. <br>
+          • Monthly performance review + handoff brief for Q2 roadmap.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:22px">
+      <div class="panel gold">
+        <h3>Scaling Principles</h3>
+        <ul>
+          <li>Never scale a campaign that hasn't exited learning phase.</li>
+          <li>Increase budget by max 20% every 3–4 days on winners.</li>
+          <li>Kill only after 14 days or ₹5,000 spend — whichever comes first.</li>
+          <li>Duplicate winners into new geographies before increasing original ad set budget.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Optimization Cadence</h3>
+        <ul>
+          <li><strong>Daily:</strong> budget pacing, frequency checks, anomaly scan.</li>
+          <li><strong>Weekly:</strong> creative performance review, audience overlap audit, CPL trend line.</li>
+          <li><strong>Bi-weekly:</strong> creative refresh, audience lookalike regeneration.</li>
+          <li><strong>Monthly:</strong> full P&amp;L review, expansion/kill decisions, next-month brief sign-off.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 13: CTA ============ -->
+<section class="slide cta" data-title="Let's Begin">
+  <div class="kicker">The Way Forward</div>
+  <h1>The portfolio is ready.<br>The <em>plan is on the table.</em><br>Let's build Amrut's national chapter.</h1>
+  <div class="sub">A structured, data-backed 90-day rollout — starting with Kerala &amp; Gujarat, scaling through MP &amp; Chhattisgarh, anchored by the strongholds we've already built in MH, KA, and Goa.</div>
+  <button class="btn" onclick="alert('Let\\'s align on the Month 1 scope — contact hello@futureadymedia.com')">Schedule the 30-Minute Rollout Walkthrough</button>
+  <div class="contact">
+    <span><strong>Prepared By</strong>Futuready Media</span>
+    <span><strong>Website</strong>futureadymedia.com</span>
+    <span><strong>Email</strong>hello@futureadymedia.com</span>
+    <span><strong>Mumbai, India</strong>Strategy → Creative → Performance</span>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ NAV ============ -->
+<div class="nav">
+  <div class="left">
+    <div class="counter"><span class="cur" id="curNum">01</span> <span style="color:var(--text-dim)">/</span> <span id="totNum">13</span></div>
+    <div class="title" id="curTitle">Cover</div>
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="arrows">
+    <button class="arr" id="prev">◀</button>
+    <button class="arr" id="next">▶</button>
+  </div>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dotsWrap = document.getElementById('dots');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+const progress = document.getElementById('progress');
+const curNum = document.getElementById('curNum');
+const totNum = document.getElementById('totNum');
+const curTitle = document.getElementById('curTitle');
+let idx = 0;
+const total = slides.length;
+totNum.textContent = String(total).padStart(2,'0');
+
+// build dots
+slides.forEach((s,i)=>{
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===0?' active':'');
+  d.title = s.dataset.title;
+  d.addEventListener('click',()=>go(i));
+  dotsWrap.appendChild(d);
+});
+const dots = document.querySelectorAll('.nav .dot');
+
+function go(n){
+  n = Math.max(0, Math.min(total-1, n));
+  slides[idx].classList.remove('active');
+  dots[idx].classList.remove('active');
+  idx = n;
+  slides[idx].classList.add('active');
+  slides[idx].scrollTop = 0;
+  dots[idx].classList.add('active');
+  curNum.textContent = String(idx+1).padStart(2,'0');
+  curTitle.textContent = slides[idx].dataset.title;
+  progress.style.width = ((idx+1)/total*100)+'%';
+  prev.disabled = idx===0;
+  next.disabled = idx===total-1;
+}
+prev.addEventListener('click',()=>go(idx-1));
+next.addEventListener('click',()=>go(idx+1));
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight' || e.key===' ') go(idx+1);
+  if(e.key==='ArrowLeft') go(idx-1);
+  if(e.key==='Home') go(0);
+  if(e.key==='End') go(total-1);
+});
+go(0);
+</script>
+</body>
+</html>
